@@ -26,3 +26,13 @@
 	border-color: #fdc502;
 	color: #252525;
 }
+.content-wrapper,
+.main-footer {
+    margin-left: 0;
+}
+.main-header,
+.skin-blue .main-header .logo,
+.navbar-static-top {
+    height: 100px;
+    background: #003164 !important;
+}
