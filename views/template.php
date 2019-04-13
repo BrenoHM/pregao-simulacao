@@ -59,13 +59,14 @@
 <div class="wrapper">
 
   <header class="main-header">
+
     <!-- Logo -->
-    <a href="<?php echo BASE_URL; ?>/" class="logo">
+    <!--<a href="<?php //echo BASE_URL; ?>/" class="logo">-->
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b><?php echo Sessao::getSessionNivel() == "admin" ? 'ADM' : 'ATL'; ?></b></span>
+      <!--<span class="logo-mini"><b><?php //echo Sessao::getSessionNivel() == "admin" ? 'ADM' : 'ATL'; ?></b></span>-->
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b><?php echo $_SESSION['usuario']['login']; ?></b></span>
-    </a>
+      <!--<span class="logo-lg"><b><?php //echo $_SESSION['usuario']['login']; ?></b></span>-->
+    <!--</a>-->
     <!-- Header Navbar: style can be found in header.less -->
     
       <!-- Sidebar toggle button-->
@@ -76,17 +77,29 @@
         <span class="icon-bar"></span>
       </a>-->
 
+      <nav>
+        <ul class="menu">
+            <li><a href="<?php echo BASE_URL ?>/">Home</a></li>
+                <li><a href="#">Serviços do Fornecedor</a>
+                    <ul>
+                        <li><a href="<?php echo BASE_URL ?>/pregao-eletronico">Pregão Eletrônico</a></li>
+                    </ul>
+                </li>
+            <li><a href="<?php echo BASE_URL ?>/logout">Sair</a></li>
+        </ul>
+      </nav>
+
       
   </header>
 
   <!-- =============================================== -->
 
   <?php
-    if( Sessao::getSessionNivel() == 'atletica' ){
+    /*if( Sessao::getSessionNivel() == 'atletica' ){
         $dadoUsuario = $usuario->getId(Sessao::getSessionId());
         $viewData['idAtletica'] = $dadoUsuario['idAtletica'];
     }
-    $viewData['gravata'] = $gravata;
+    $viewData['gravata'] = $gravata;*/
     //$this->loadView("menu", $viewData); 
   ?>
 
