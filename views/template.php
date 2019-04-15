@@ -60,6 +60,8 @@
 
   <header class="main-header">
 
+    <h1 style="color: white; padding-left: 10px;">Simulador Pregão Eletrônico</h1>
+
     <!-- Logo -->
     <!--<a href="<?php //echo BASE_URL; ?>/" class="logo">-->
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -77,20 +79,18 @@
         <span class="icon-bar"></span>
       </a>-->
 
-      <nav>
-        <ul class="menu">
-            <li><a href="<?php echo BASE_URL ?>/">Home</a></li>
-                <li><a href="#">Serviços do Fornecedor</a>
-                    <ul>
-                        <li><a href="<?php echo BASE_URL ?>/pregao-eletronico">Pregão Eletrônico</a></li>
-                    </ul>
-                </li>
-            <li><a href="<?php echo BASE_URL ?>/logout">Sair</a></li>
-        </ul>
-      </nav>
-
-      
   </header>
+
+  <ul class="menu">
+      <li><a href="<?php echo BASE_URL ?>/">Home</a></li>
+          <li><a href="#">Serviços do Fornecedor</a>
+              <ul>
+                  <li><a href="<?php echo BASE_URL ?>/pregao-eletronico">Pregão Eletrônico</a></li>
+              </ul>
+          </li>
+      <li><a href="<?php echo BASE_URL ?>/logout">Sair</a></li>
+  </ul>
+      
 
   <!-- =============================================== -->
 

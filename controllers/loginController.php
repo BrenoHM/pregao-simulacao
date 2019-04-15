@@ -34,7 +34,15 @@ class loginController extends controller {
         $_SESSION['usuario'] = array(
             'perfil' => $post['perfil'],
             'login'  => $post['login'],
-            'senha'  => $post['senha']
+            'senha'  => $post['senha'],
+            'propostas' => array(
+                /*'idProposta'          => '',
+                'codigo'              => '',
+                'orgao'               => '',
+                'num_pregao'          => '',
+                'data_envio_proposta' => '',
+                'data_sessao_publica' => '',*/
+            )
         );
         
     }

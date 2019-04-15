@@ -7,7 +7,7 @@
 </section>
 <section class="content">
 	<ul>
-		<li><a href="">Proposta</a></li>
+		<li><a href="<?php echo BASE_URL ?>/propostas">Proposta</a></li>
 		<li><a href="">Lances</a></li>
 	</ul>
 </section>
