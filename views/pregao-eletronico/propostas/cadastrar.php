@@ -10,6 +10,8 @@
 <!-- Main content -->
 <section class="content">
 
+  <div class="row">
+    <div class="col-xs-12">
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
@@ -18,55 +20,56 @@
     <div class="box-body">
         
         <?php if( isset($aviso) ){ echo $aviso; } ?>
-        
+
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="form-group col-md-4">
-                  <label for="uf">Uf</label>
-                  <select name="uf" required="" class="form-control">
-                    <option value="">Selecione</option>
-                    <option value="MG">MG</option>
-                  </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-1">
-                  <label for="codigo">Cod. da UASG (Unid. de Compra)</label>
-                  <input type="text" id="codigo" class="form-control" name="codigo" placeholder="Código" value="<?php if( isset($evento['nome']) ) { echo $evento['nome']; } ?>" required="required">
-                </div>
-                <div class="col-md-1 text-center margin-left-right-0">OU</div>
-                <div class="form-group col-md-2">
-                  <label for="orgao">Órgão</label>
-                  <select name="orgao" multiple class="form-control">
-                    <option value="MIN. DO PLANEJAMENTO ORCAMENTO E GESTAO/DF">MIN. DO PLANEJAMENTO ORCAMENTO E GESTAO/DF</option>
-                  </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                  <label for="num_pregao">Número Pregão</label>
-                  <input type="text" id="num_pregao" class="form-control" name="num_pregao" placeholder="Preencha número e ano. Ex: 102005" value="<?php if( isset($evento['num_pregao']) ) { echo $evento['num_pregao']; } ?>" required="required">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                  <label for="data_envio_proposta">Data de Início do envio da proposta</label>
-                  <input type="date" id="data_envio_proposta" class="form-control" name="data_envio_proposta" placeholder="" value="<?php if( isset($evento['data_envio_proposta']) ) { echo $evento['data_envio_proposta']; } ?>" required="required">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                  <label for="data_sessao_publica">Data de início da Sessão Pública</label>
-                  <input type="date" id="data_sessao_publica" class="form-control" name="data_sessao_publica" placeholder="" value="<?php if( isset($evento['data_sessao_publica']) ) { echo $evento['data_sessao_publica']; } ?>" required="required">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th class="text-center v-middle">Item</th>
+                <th class="v-middle">Descricao</th>
+                <th class="text-center v-middle">Tratamento<br>Diferenciado</th>
+                <th class="text-center v-middle">Aplicabilidade<br>Decreto 7174</th>
+                <th class="text-center v-middle">Aplic. Margem<br>Preferencia</th>
+                <th class="text-center v-middle">Unid<br>Fornec.</th>
+                <th class="text-center v-middle">Qtd.<br>Estimada</th>
+                <th class="text-center">&nbsp;</th>
+                <th class="text-center">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td class="text-center v-middle">1</td>
+                  <td class="v-middle">PAPEL BOBINADO</td>
+                  <td class="text-center v-middle">-</td>
+                  <td class="text-center v-middle">Não</td>
+                  <td class="text-center v-middle">Não</td>
+                  <td class="text-center v-middle">ROLO 30,00 M</td>
+                  <td class="text-center v-middle">100</td>
+                  <td class="text-center v-middle"><strong>Valor Unit.(R$)</strong><br><input type="text" name=""></td>
+                  <td class="text-center v-middle"><strong>Valor Ttoal(R$)</strong><br><input type="text" name=""></td>
+                </tr>
+                <tr>
+                  <td class="text-center v-middle">&nbsp;</td>
+                  <td class="v-middle" colspan="4"><strong>Marca</strong><br><input type="text" name="" class="form-control"></td>
+                  <td class="v-middle" colspan="4"><strong>Fabricante</strong><br><input type="text" name="" class="form-control"></td>
+                </tr>
+                <tr>
+                  <td class="text-center v-middle">&nbsp;</td>
+                  <td class="v-middle" colspan="8"><strong>Descricao detalhada do objeto ofertado</strong><br><textarea class="form-control" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                  <td class="text-center v-middle">&nbsp;</td>
+                  <td class="v-middle" colspan="8"><strong>Caracteres restantes: </strong><input type="text" name="" value="5000"></td>
+                </tr>
+            </tbody>
+          </table>
+          <div class="row">
+                <div class="form-group col-md-12 text-center">
                     <input type="submit" name="cadastrar" value="OK" class="btn btn-primary" />
                     <a href="<?php echo BASE_URL ?>/propostas/cadastrar" class="btn btn-primary">Limpar</a>
                     <a href="<?php echo BASE_URL ?>/propostas/" class="btn btn-primary">Voltar</a>
                 </div>
-            </div>
+          </div>
         </form>
         
         <?php //$this->loadView("clientes/form", array()); ?>
@@ -76,6 +79,8 @@
     
   </div>
   <!-- /.box -->
+</div>
+</div>
 
 </section>
 <!-- /.content -->

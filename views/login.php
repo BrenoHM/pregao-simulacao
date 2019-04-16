@@ -35,12 +35,12 @@
 <div class="login-box">
 
   <div class="col-md-6 text-center">
-    <h1>Comprasnet</h1>
-    <h2>SIASG - SISTEMA INTEGRADO DE ADMINISTRAÇÃO DE SERVIÇOS GERAIS</h2>
+    <h1>CGOV</h1>
+    <h2>Soluções em Licitações</h2>
   </div>
 
   <div class="col-md-6 login-box-body">
-    <p class="login-box-msg">MINISTÉRIO DO PLANEJAMENTO ORÇAMENTO E GESTÃO</p>
+    <!--<p class="login-box-msg">MINISTÉRIO DO PLANEJAMENTO ORÇAMENTO E GESTÃO</p>-->
 
     <?php if(isset($aviso)) { echo $aviso; } ?>
     

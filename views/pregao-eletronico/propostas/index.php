@@ -8,9 +8,9 @@
 <section class="content">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="row text-center mb-10">
-				<a href="<?php echo BASE_URL ?>/propostas/cadastrar" class="btn btn-primary">Nova Proposta</a>
-			</div>
+			<!--<div class="row text-center mb-10">
+				<a href="<?php //echo BASE_URL ?>/propostas/cadastrar" class="btn btn-primary">Nova Proposta</a>
+			</div>-->
 			<div class="box">
 
 				<table class="table table-bordered table-striped">
@@ -28,7 +28,7 @@
 					<tbody>
 						<?php //foreach($propostas as $idProposta => $proposta): ?>
 							<tr>
-								<td>Incluir Proposta</td>
+								<td><a href="<?php echo BASE_URL ?>/propostas/cadastrar/<?php echo $pregao['num_pregao']; ?>">Incluir Proposta</a></td>
 								<td><?php echo $pregao['num_pregao']; ?></td>
 								<td><?php echo $pregao['cod_uasg']; ?></td>
 								<td><?php echo $pregao['orgao']; ?></td>
@@ -43,6 +43,6 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<a href="<?php echo BASE_URL ?>/pregao-eletronico" class="btn btn-primary">Voltar</a>
+		<a href="<?php echo BASE_URL ?>/propostas" class="btn btn-primary">Voltar</a>
 	</div>
 </section>

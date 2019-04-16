@@ -27,7 +27,7 @@ class propostasController extends controller {
         
     }
 
-    public function cadastrar() 
+    public function cadastrar($numPregao) 
 
     {
         
@@ -52,7 +52,6 @@ class propostasController extends controller {
                     'data_sessao_publica' => $post['data_sessao_publica'],
                 );
 
-                //dd($_SESSION);
                 echo "<META http-equiv='refresh' content='2;URL=".BASE_URL."/propostas'>";
             }
             
