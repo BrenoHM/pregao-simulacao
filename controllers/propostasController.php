@@ -13,10 +13,13 @@ class propostasController extends controller {
         if( Sessao::getSessionId() != "" ){
             
             $dados = array();
-
-            $dados['propostas'] = $_SESSION['usuario']['propostas'];
             
-            $this->loadTemplate('pregao-eletronico/propostas/index', $dados);
+            if( isset($_POST['filtrar']) ){
+                $dados['pregao'] = $_SESSION['usuario']['pregao'];
+                $this->loadTemplate('pregao-eletronico/propostas/index', $dados);
+            }else{
+                $this->loadTemplate('pregao-eletronico/propostas/filtro', $dados);
+            }
             
         }else{
             header("Location: " . BASE_URL . "/login");

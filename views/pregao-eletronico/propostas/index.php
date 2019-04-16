@@ -26,17 +26,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($propostas as $idProposta => $proposta): ?>
+						<?php //foreach($propostas as $idProposta => $proposta): ?>
 							<tr>
-								<th><?php echo $idProposta; ?></td>
-								<td><?php echo $proposta['num_pregao']; ?></td>
-								<td><?php echo $proposta['codigo']; ?></td>
-								<td><?php echo $proposta['orgao']; ?></td>
-								<td><?php echo $proposta['data_envio_proposta']; ?></td>
-								<td>Não</td>
-								<td>Não</td>
+								<td>Incluir Proposta</td>
+								<td><?php echo $pregao['num_pregao']; ?></td>
+								<td><?php echo $pregao['cod_uasg']; ?></td>
+								<td><?php echo $pregao['orgao']; ?></td>
+								<td><?php echo $pregao['data_abertura']; ?></td>
+								<td><?php echo $pregao['srp']; ?></td>
+								<td><?php echo $pregao['icms']; ?></td>
 							</tr>
-						<?php endforeach; ?>
+						<?php //endforeach; ?>
 					</tbody>
 				</table>
 			</div>

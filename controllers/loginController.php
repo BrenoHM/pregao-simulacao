@@ -35,6 +35,14 @@ class loginController extends controller {
             'perfil' => $post['perfil'],
             'login'  => $post['login'],
             'senha'  => $post['senha'],
+            'pregao' => array(
+                'num_pregao'    => 662014,
+                'cod_uasg'      => 200999,
+                'orgao'         => 'MIN. DO PLANEJAMENTO ORCAMENTO E GESTAO/DF',
+                'data_abertura' => '22/05/2014 16:00',
+                'srp'           => 'Não',
+                'icms'          => 'Não'
+            ),
             'propostas' => array(
                 /*'idProposta'          => '',
                 'codigo'              => '',
