@@ -35,8 +35,9 @@
 <div class="login-box">
 
   <div class="col-md-6 text-center">
-    <h1>CGOV</h1>
-    <h2>Soluções em Licitações</h2>
+    <!--<h1>CGOV</h1>
+    <h2>Soluções em Licitações</h2>-->
+    <img src="<?php echo BASE_URL; ?>/dist/img/cgov-logo-header.png" alt="LOGOMARCA CGOV" />
   </div>
 
   <div class="col-md-6 login-box-body">
