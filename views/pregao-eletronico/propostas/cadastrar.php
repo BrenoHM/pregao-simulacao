@@ -37,38 +37,77 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-                  <td class="text-center v-middle">1</td>
-                  <td class="v-middle">PAPEL BOBINADO</td>
-                  <td class="text-center v-middle">-</td>
-                  <td class="text-center v-middle">Não</td>
-                  <td class="text-center v-middle">Não</td>
-                  <td class="text-center v-middle">ROLO 30,00 M</td>
-                  <td class="text-center v-middle">100</td>
-                  <td class="text-center v-middle"><strong>Valor Unit.(R$)</strong><br><input type="text" name=""></td>
-                  <td class="text-center v-middle"><strong>Valor Ttoal(R$)</strong><br><input type="text" name=""></td>
-                </tr>
-                <tr>
-                  <td class="text-center v-middle">&nbsp;</td>
-                  <td class="v-middle" colspan="4"><strong>Marca</strong><br><input type="text" name="" class="form-control"></td>
-                  <td class="v-middle" colspan="4"><strong>Fabricante</strong><br><input type="text" name="" class="form-control"></td>
-                </tr>
-                <tr>
-                  <td class="text-center v-middle">&nbsp;</td>
-                  <td class="v-middle" colspan="8"><strong>Descricao detalhada do objeto ofertado</strong><br><textarea class="form-control" rows="5"></textarea></td>
-                </tr>
-                <tr>
-                  <td class="text-center v-middle">&nbsp;</td>
-                  <td class="v-middle" colspan="8"><strong>Caracteres restantes: </strong><input type="text" name="" value="5000"></td>
-                </tr>
+                <?php foreach( $items as $idItem => $item ): ?>
+                  <tr>
+                    <td class="text-center v-middle"><?php echo $idItem; ?></td>
+                    <td class="v-middle"><?php echo $item['descricao']; ?></td>
+                    <td class="text-center v-middle"><?php echo $item['tratamento_diferenciado']; ?></td>
+                    <td class="text-center v-middle"><?php echo $item['aplicabilidade_decreto_7174']; ?></td>
+                    <td class="text-center v-middle"><?php echo $item['aplic_margem_preferencia']; ?></td>
+                    <td class="text-center v-middle"><?php echo $item['unid_fornec']; ?></td>
+                    <td class="text-center v-middle"><?php echo $item['qtd_estimada']; ?></td>
+                    <td class="text-center v-middle"><strong>Valor Unit.(R$)</strong><br><input type="text" name=""></td>
+                    <td class="text-center v-middle"><strong>Valor Ttoal(R$)</strong><br><input type="text" name=""></td>
+                  </tr>
+                  <tr>
+                    <td class="text-center v-middle">&nbsp;</td>
+                    <td class="v-middle" colspan="4"><strong>Marca</strong><br><input type="text" name="" class="form-control"></td>
+                    <td class="v-middle" colspan="4"><strong>Fabricante</strong><br><input type="text" name="" class="form-control"></td>
+                  </tr>
+                  <tr>
+                    <td class="text-center v-middle">&nbsp;</td>
+                    <td class="v-middle" colspan="8"><strong>Descricao detalhada do objeto ofertado</strong><br><textarea class="form-control" rows="5"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td class="text-center v-middle">&nbsp;</td>
+                    <td class="v-middle" colspan="8"><strong>Caracteres restantes: </strong><input type="text" name="" value="5000"></td>
+                  </tr>
+                <?php endforeach; ?>
             </tbody>
           </table>
+          
+          <div class="col-md-12 mb-10 text-center" style="border: 1px solid #eee">
+            <p>Declaro que estou ciente e concordo com as condições no edital e seus anexos, bem como de que cumpro plenamente os requisitos de habilitação definidos no edital.</p>
+            <p class="text-center">
+              <label><input type="radio" name="ciente_edital" value="SIM"> SIM</label>
+              <label><input type="radio" name="ciente_edital" value="NÃO"> NÃO</label>
+            </p>
+          </div>
+
+          <div class="col-md-12 mb-10 text-center" style="border: 1px solid #eee">
+            <p>Declaro sob as penas da lei, que até a presente data inexistem fatos impeditivos para a minha habilitação no presente processo licitário, ciente da obrigatoriedade de declarar ocorrências posteriores.</p>
+            <p class="text-center">
+              <label><input type="radio" name="ciente_obrigatoriedade" value="SIM"> SIM</label>
+              <label><input type="radio" name="ciente_obrigatoriedade" value="NÃO"> NÃO</label>
+            </p>
+          </div>
+
+          <div class="col-md-12 mb-10 text-center" style="border: 1px solid #eee">
+            <p>Declaro que estou ciente e concordo com as condições no edital e seus anexos, bem como de que cumpro plenamente os requisitos de habilitação definidos no edital</p>
+            <p class="text-center">
+              <label><input type="radio" name="ciente_edital" value="SIM"> SIM</label>
+              <label><input type="radio" name="ciente_edital" value="NÃO"> NÃO</label>
+            </p>
+          </div>
+
+          <div class="col-md-12 mb-10 text-center" style="border: 1px solid #eee">
+            <p>Declaro que a proposta apresentada para essa licitação foi elaborada de maneira independente, de cordo com o que é estabelecido na Instrução Normativa Nº 2 de 16 de setembro de 2009 da SLTI/MP. <br>Clique <a href="#">aqui</a> para detalhamento dessa declaração.</p>
+            <p class="text-center">
+              <label><input type="radio" name="proposta_independente" value="SIM"> SIM</label>
+              <label><input type="radio" name="proposta_independente" value="NÃO"> NÃO</label>
+            </p>
+          </div>
+
+          <div class="col-md-12 mb-10" style="border: 1px solid #eee">
+            <p>Obs: Os itens, cujo campo de proposta estiver em branco, não serão cadastrados, podendo ser encaminhados posteriormente.</p>
+          </div>
+
+          <br>
           <div class="row">
-                <div class="form-group col-md-12 text-center">
-                    <input type="submit" name="cadastrar" value="OK" class="btn btn-primary" />
-                    <a href="<?php echo BASE_URL ?>/propostas/cadastrar" class="btn btn-primary">Limpar</a>
-                    <a href="<?php echo BASE_URL ?>/propostas/" class="btn btn-primary">Voltar</a>
-                </div>
+              <div class="form-group col-md-12 text-center">
+                  <a href="<?php echo BASE_URL ?>/propostas/" class="btn btn-primary">Voltar</a>
+                  <input type="submit" name="cadastrar" value="Incluir" class="btn btn-primary" />
+              </div>
           </div>
         </form>
         

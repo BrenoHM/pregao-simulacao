@@ -54,6 +54,9 @@ class propostasController extends controller {
 
                 echo "<META http-equiv='refresh' content='2;URL=".BASE_URL."/propostas'>";
             }
+
+
+            $dados['items'] = $_SESSION['items'];
             
             $this->loadTemplate('pregao-eletronico/propostas/cadastrar', $dados);
             

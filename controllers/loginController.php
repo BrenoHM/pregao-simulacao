@@ -52,6 +52,60 @@ class loginController extends controller {
                 'data_sessao_publica' => '',*/
             )
         );
+
+        $_SESSION['items'][1] = array(
+            'descricao'                   => 'PAPEL BOBINADO',
+            'tratamento_diferenciado'     => '-',
+            'aplicabilidade_decreto_7174' => 'Não',
+            'aplic_margem_preferencia'    => 'Não',
+            'unid_fornec'                 => 'ROLO 30,00 M',
+            'qtd_estimada'                => 100
+        );
+
+        $_SESSION['items'][2] = array(
+            'descricao'                   => 'GRAXA',
+            'tratamento_diferenciado'     => '-',
+            'aplicabilidade_decreto_7174' => 'Não',
+            'aplic_margem_preferencia'    => 'Não',
+            'unid_fornec'                 => 'RECIPIENTE 1,00 KG',
+            'qtd_estimada'                => 4
+        );
+
+        $_SESSION['items'][3] = array(
+            'descricao'                   => 'AÇÚCAR',
+            'tratamento_diferenciado'     => '-',
+            'aplicabilidade_decreto_7174' => 'Não',
+            'aplic_margem_preferencia'    => 'Não',
+            'unid_fornec'                 => 'PACOTE 1,00 KG',
+            'qtd_estimada'                => 300
+        );
+
+        $_SESSION['items'][4] = array(
+            'descricao'                   => 'CAPA CORTE CABELO',
+            'tratamento_diferenciado'     => '-',
+            'aplicabilidade_decreto_7174' => 'Não',
+            'aplic_margem_preferencia'    => 'Não',
+            'unid_fornec'                 => 'UNIDADE',
+            'qtd_estimada'                => 20
+        );
+
+        $_SESSION['items'][5] = array(
+            'descricao'                   => 'TINTA ESMALTE',
+            'tratamento_diferenciado'     => '-',
+            'aplicabilidade_decreto_7174' => 'Não',
+            'aplic_margem_preferencia'    => 'Não',
+            'unid_fornec'                 => 'GALÃO 3,6 L',
+            'qtd_estimada'                => 7
+        );
+
+        $_SESSION['items'][6] = array(
+            'descricao'                   => 'APARELHO SOM',
+            'tratamento_diferenciado'     => '-',
+            'aplicabilidade_decreto_7174' => 'Não',
+            'aplic_margem_preferencia'    => 'Não',
+            'unid_fornec'                 => 'UNIDADE',
+            'qtd_estimada'                => 2
+        );
         
     }
 
