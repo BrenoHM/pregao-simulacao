@@ -32,6 +32,9 @@
 	border-color: #fdc502;
 	color: #252525;
 }
+.btn-primary:hover {
+    background: #000;
+}
 .content-header {
     margin-top: 25px;
 }
@@ -47,11 +50,11 @@
 .skin-blue .main-header .logo,
 .navbar-static-top {
     height: 90px;
-    background: #003164;
+    background: #fff;
 }
 .main-footer {
-    background: #003164;
-    color: white;
+    background: #000;
+    color: #fff;
 }
 .menu{
     list-style:none; 
@@ -59,7 +62,7 @@
     margin-bottom: 0;
     padding-left: 0;
     width: 100%;
-    background: #003164;
+    background: #000;
     position: relative;
     z-index: 1;
 }
@@ -81,7 +84,7 @@
     position:absolute;
     top: 30px;
     left:0;
-    background-color: #003164;
+    background-color: #000;
     display:none;
     padding-left: 0;
     border-right: none;

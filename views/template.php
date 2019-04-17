@@ -60,7 +60,7 @@
 
   <header class="main-header">
 
-    <h1 style="color: white; padding-left: 10px;">Simulador Pregão Eletrônico</h1>
+    <img src="<?php echo BASE_URL; ?>/dist/img/cgov-logo-header.png" alt="LOGOMARCA CGOV" height="90" />
 
     <!-- Logo -->
     <!--<a href="<?php //echo BASE_URL; ?>/" class="logo">-->
