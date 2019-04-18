@@ -54,17 +54,19 @@
         </select>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="login" placeholder="Login">
+        <input type="text" class="form-control" name="login" placeholder="* Login" required>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="senha" placeholder="Senha">
+        <input type="password" class="form-control" name="senha" placeholder="* Senha" required>
       </div>
+       <span>* Inserir dados fictícios</span>
       <div class="row">
         <div class="col-xs-8">
           Ambiente: Simulação
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
+          <br />
+        <div class="col-xs-4 pull-right">
             <button type="submit" name="formLogar" class="btn btn-primary btn-block btn-flat">ACESSAR</button>
         </div>
         <!-- /.col -->
