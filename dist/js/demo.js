@@ -377,6 +377,8 @@
     $("#cnpj").mask("99.999.999/9999-99");
     
     $(".select2").select2();
+
+    $('.money').mask("#.##0,00", {reverse: true});
     
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.

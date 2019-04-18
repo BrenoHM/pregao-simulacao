@@ -63,8 +63,8 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <input type="submit" name="filtrar" value="OK" class="btn btn-primary" />
-                    <a href="<?php echo BASE_URL ?>/propostas/cadastrar" class="btn btn-primary">Limpar</a>
-                    <a href="<?php echo BASE_URL ?>/propostas/" class="btn btn-primary">Voltar</a>
+                    <a href="<?php echo BASE_URL ?>/propostas/" class="btn btn-primary">Limpar</a>
+                    <a href="<?php echo BASE_URL ?>/pregao-eletronico" class="btn btn-primary">Voltar</a>
                 </div>
             </div>
         </form>

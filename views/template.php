@@ -137,7 +137,7 @@
 <script src="<?php echo BASE_URL; ?>/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- Masked Input -->
-<script src="<?php echo BASE_URL; ?>/plugins/maskedinput/jquery.maskedinput.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/plugins/maskedinput/jquery.mask.min.js"></script>
 <!-- nicEdit -->
 <script type="text/javascript" src="<?php echo BASE_URL; ?>/plugins/nicEdit/nicEdit.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -177,13 +177,13 @@
 <script>
     
     $(function(){
-        $("#checkAll").change(function(){
+        /*$("#checkAll").change(function(){
             if ($(this).is(':checked')) {
                 $('input:checkbox').not($(this)).prop('checked',true);
             } else {
                 $('input:checkbox').prop('checked', false);
             }       
-          });
+        });*/
     });
     
     /*function removeFoto(obj, controller){
