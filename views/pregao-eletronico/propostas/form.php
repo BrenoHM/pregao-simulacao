@@ -1,14 +1,14 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <?php if( isset($proposta) ): ?>
+      <?php if( isset($proposta) && !$show ): ?>
         <th class="text-center v-middle">Marcar<br>Todas</th>
       <?php endif; ?>
       <th class="text-center v-middle">Item</th>
       <th class="v-middle">Descricao</th>
       <th class="text-center v-middle">Tratamento<br>Diferenciado</th>
       <th class="text-center v-middle">Aplicabilidade<br>Decreto 7174</th>
-      <th class="text-center v-middle">Aplic. Margem<br>Preferencia</th>
+      <th class="text-center v-middle">Aplic. Margem<br>Preferência</th>
       <th class="text-center v-middle">Unid<br>Fornec.</th>
       <th class="text-center v-middle">Qtd.<br>Estimada</th>
       <th class="text-center">&nbsp;</th>
@@ -18,7 +18,7 @@
   <tbody>
       <?php foreach( $itens as $idItem => $item ): ?>
         <tr>
-          <?php if( isset($proposta) ): ?>
+          <?php if( isset($proposta) && !$show ): ?>
               <td class="text-center v-middle">
                 <?php if( isset($proposta['itens'][$idItem]) ): ?>
                   <input type="checkbox" name="delItem[]" value="<?php echo $idItem; ?>">
@@ -74,12 +74,12 @@
             <?php endif; ?>
           </td>
         </tr>
-        <?php if( !isset($proposta['itens'][$idItem]) || $alterar ): ?>
-            <tr>
+        <?php //if( !isset($proposta['itens'][$idItem]) || $alterar ): ?>
+            <!--<tr>
               <td class="text-center v-middle">&nbsp;</td>
-              <td class="v-middle" colspan="8"><strong>Caracteres restantes: </strong><input type="text" name="" value="5000" <?php echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?>></td>
-            </tr>
-        <?php endif; ?>
+              <td class="v-middle" colspan="8"><strong>Caracteres restantes: </strong><input type="text" name="" value="5000" <?php //echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?>></td>
+            </tr>-->
+        <?php //endif; ?>
       <?php endforeach; ?>
   </tbody>
 </table>
@@ -123,12 +123,14 @@
 <br>
 <div class="row">
     <div class="form-group col-md-12 text-center">
-        <a href="<?php echo BASE_URL ?>/propostas/" class="btn btn-primary">Voltar</a>
-        <input type="submit" name="cadastrar" value="Incluir" <?php echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?> class="btn btn-primary" />
-        <?php if(isset($alterar) && !$alterar): ?>
+        <a href="<?php echo BASE_URL ?>/propostas/consultar" class="btn btn-primary">Voltar</a>
+        <?php if( !$show ): ?>
+            <input type="submit" name="cadastrar" value="Incluir" <?php echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?> class="btn btn-primary" />
+        <?php endif; ?>
+        <?php if(isset($alterar) && !$alterar && !$show): ?>
             <input type="submit" name="alterar" value="Alterar" class="btn btn-primary" />
         <?php endif; ?>
-        <?php if(isset($alterar)): ?>
+        <?php if(isset($alterar) && !$show): ?>
             <input type="submit" name="excluir" value="Excluir" class="btn btn-primary" onclick="return confirm('Tem certeza que deseja excluir a(s) proposta(s) selecionada(s)?')" />
         <?php endif; ?>
     </div>

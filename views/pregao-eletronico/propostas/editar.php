@@ -1,9 +1,9 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>Cadastramento de Proposta</h1>
+  <h1><?php echo isset($titulo) ? $titulo : 'Cadastramento de Proposta'; ?></h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Cadastramento de Proposta</li>
+    <li class="active"><?php echo isset($titulo) ? $titulo : 'Cadastramento de Proposta'; ?></li>
   </ol>
 </section>
 
@@ -15,7 +15,7 @@
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">Inclua a proposta</h3>
+      <h3 class="box-title"><?php echo isset($titulo) ? $titulo : 'Cadastramento de Proposta'; ?></h3>
     </div>
     <div class="box-body">
         
@@ -25,7 +25,7 @@
         ?>
 
         <form action="" method="post">
-            <?php $this->loadView("pregao-eletronico/propostas/form", array('itens' => $itens, 'proposta' => $proposta, 'alterar' => $alterar)); ?>
+            <?php $this->loadView("pregao-eletronico/propostas/form", array('itens' => $itens, 'proposta' => $proposta, 'alterar' => $alterar, 'show' => $show)); ?>
             <input type="hidden" name="alteracao" value="<?php echo $alterar; ?>">
         </form>
         

@@ -35,6 +35,8 @@ class propostasController extends controller {
             
             $dados = array();
 
+            $dados['show'] = false;
+
             if( isset($_POST['cadastrar']) ) {
 
                 $post = $_POST;
@@ -101,7 +103,11 @@ class propostasController extends controller {
 
             $dados = array();
 
+            $dados['titulo']   = "Editar a Proposta";
+
             $dados['alterar'] = false;
+
+            $dados['show']    = false;
 
             if( isset($_POST['alterar']) || (isset($_POST['alteracao']) && $_POST['alteracao']) ) {
                 $dados['alterar'] = true;
@@ -176,6 +182,38 @@ class propostasController extends controller {
         }else{
             header("Location: " . BASE_URL . "/login");
         }
+    }
+
+    public function consultar()
+
+    {
+
+        $dados = array();
+
+        $dados['propostas'] = $_SESSION['usuario']['propostas'];
+
+        $this->loadTemplate('pregao-eletronico/propostas/consultar', $dados);
+
+    }
+
+    public function show($idProposta)
+
+    {
+
+        $dados = array();
+
+        $dados['titulo']   = "Proposta";
+
+        $dados['alterar']  = false;
+
+        $dados['show']     = true;
+
+        $dados['proposta'] = $_SESSION['usuario']['propostas'][$idProposta];
+
+        $dados['itens']    = $_SESSION['items'];
+
+        $this->loadTemplate('pregao-eletronico/propostas/editar', $dados);
+
     }
     
 }

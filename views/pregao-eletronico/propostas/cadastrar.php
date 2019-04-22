@@ -22,7 +22,7 @@
         <?php if( isset($aviso) ){ echo $aviso; } ?>
 
         <form action="" method="post" onsubmit="return confirmaDados();">
-            <?php $this->loadView("pregao-eletronico/propostas/form", array('itens' => $itens)); ?>  
+            <?php $this->loadView("pregao-eletronico/propostas/form", array('itens' => $itens, 'show' => $show)); ?>  
         </form>
         
     </div>
