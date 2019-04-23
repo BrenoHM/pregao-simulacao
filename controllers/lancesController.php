@@ -24,7 +24,7 @@ class lancesController extends controller {
         
     }
 
-    /*public function cadastrar($numPregao) 
+    public function cadastrar($numPregao) 
 
     {
         
@@ -85,7 +85,7 @@ class lancesController extends controller {
 
             $dados['itens'] = $_SESSION['items'];
             
-            $this->loadTemplate('pregao-eletronico/propostas/cadastrar', $dados);
+            $this->loadTemplate('pregao-eletronico/lances/cadastrar', $dados);
             
         }else{
             header("Location: " . BASE_URL . "/login");
@@ -93,6 +93,7 @@ class lancesController extends controller {
         
     }
 
+    /*
     public function editar($idProposta)
 
     {
