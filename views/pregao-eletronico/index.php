@@ -8,6 +8,6 @@
 <section class="content">
 	<ul>
 		<li><a href="<?php echo BASE_URL ?>/propostas">Proposta</a> | <a href="<?php echo BASE_URL ?>/propostas/consultar">Consultar</a></li>
-		<li><a href="">Lances</a></li>
+		<li><a href="<?php echo BASE_URL ?>/lances">Lances</a></li>
 	</ul>
 </section>

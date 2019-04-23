@@ -1,6 +1,6 @@
 <?php
 
-class propostasController extends controller {
+class lancesController extends controller {
     
     function __construct() {
         parent::__construct();
@@ -13,13 +13,10 @@ class propostasController extends controller {
         if( Sessao::getSessionId() != "" ){
             
             $dados = array();
-            
-            if( isset($_POST['filtrar']) ){
-                $dados['pregao'] = $_SESSION['usuario']['pregao'];
-                $this->loadTemplate('pregao-eletronico/propostas/index', $dados);
-            }else{
-                $this->loadTemplate('pregao-eletronico/propostas/filtro', $dados);
-            }
+
+            $dados['propostas'] = $_SESSION['usuario']['propostas'];
+
+            $this->loadTemplate('pregao-eletronico/lances/index', $dados);
             
         }else{
             header("Location: " . BASE_URL . "/login");
@@ -27,7 +24,7 @@ class propostasController extends controller {
         
     }
 
-    public function cadastrar($numPregao) 
+    /*public function cadastrar($numPregao) 
 
     {
         
@@ -169,7 +166,7 @@ class propostasController extends controller {
 
                 }
 
-                echo "<script>window.location.href = '".BASE_URL."/propostas/consultar/'</script>";
+                echo "<script>window.location.href = '".BASE_URL."/pregao-eletronico/'</script>";
 
             }
 
@@ -215,5 +212,6 @@ class propostasController extends controller {
         $this->loadTemplate('pregao-eletronico/propostas/editar', $dados);
 
     }
+    */
     
 }
