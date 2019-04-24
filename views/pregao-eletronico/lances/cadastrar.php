@@ -22,23 +22,51 @@
 							<th>Seu Último<br>Lance</th>
 							<th>Melhor Lance</th>
 							<th>Lance</th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($itens as $idItem => $item): ?>
+						<?php foreach($itens as $idItem => $item): 
+								if( isset($lances[$idItem]) ) {
+
+									$search        = array('.', ',');
+                    				$replace       = array('', '.');
+
+									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) >= str_replace($search, $replace, $lances[$idItem]['melhor']) ){
+										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
+									}else{
+										$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";
+									}
+
+								}else{
+									$icone = "<i class='fa fa-thumbs-o-down' aria-hidden='true' style='color: red;'></i>";
+								}
+							?>
+							
 							<tr>
-								<td><?php echo $idItem; ?></td>
+								<td><?php echo $icone; ?> <?php echo $idItem; ?></td>
 								<td><?php echo $item['descricao']; ?></td>
-								<td><?php echo 'Aberto'; ?></td>
-								<td><?php echo 'R$ 1,00'; ?></td>
-								<td><?php echo 'R$ 1,00'; ?></td>
-								<td><input type="text" name="lance" class="money"></td>
-								<td>(R$) <a href="#">Enviar</a></td>
+								<td><?php echo $situacaoLance; ?></td>
+								<td><?php echo isset($lances[$idItem]['ultimo']) ? $lances[$idItem]['ultimo'] : '-'; ?></td>
+								<td><?php echo isset($lances[$idItem]['melhor']) ? $lances[$idItem]['melhor'] : '-'; ?></td>
+								<td>(R$) <form action="" method="post" style="display: inline;">
+											<input type="text" name="lance" class="money" required="required">
+											<input type="submit" name="cadastrar" value="Enviar">
+											<input type="hidden" name="item" value="<?php echo $idItem; ?>" />
+											<input type="hidden" name="idProposta" value="<?php echo $idProposta; ?>">
+										</form>
+								</td>
 							</tr>
+							
 						<?php endforeach; ?>
 					</tbody>
 				</table>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-4 text-center"><i class="fa fa-2x fa-thumbs-o-up" aria-hidden="true" style="color: green;"></i> Seu lance é o vencedor.</div>
+						<div class="col-md-4 text-center"><i class="fa fa-2x fa-thumbs-o-down" aria-hidden="true" style="color: red;"></i> Seu lance NÃO é o vencedor.</div>
+						<div class="col-md-4 text-center"><i class="fa fa-2x fa-hand-paper-o" aria-hidden="true" style="color: yellow;"></i> Seu lance está EMPATADO.</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -46,3 +74,24 @@
 		<a href="<?php echo BASE_URL ?>/pregao-eletronico/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>
+
+<script type="text/javascript">
+
+	$(function(){
+		$('form').on('submit', function(){
+
+			var valor = $(this).find('.money').val();
+			var msg   = 'Confirma o lance no valor de R$ '+valor+'?\nLembre-se que deve ser informado o valor total do item.';
+
+			if ( !confirm(msg) ) {
+		        return false;
+		    }
+			
+		});
+
+		<?php if( $lanceInserido ): ?>
+			alert('Lance registrado com sucesso!');
+		<?php endif; ?>
+	});
+  
+</script>

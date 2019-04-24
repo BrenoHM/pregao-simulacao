@@ -106,6 +106,8 @@ class loginController extends controller {
             'unid_fornec'                 => 'UNIDADE',
             'qtd_estimada'                => 2
         );
+
+        $_SESSION['situacaoLance'] = "A";
         
     }
 
