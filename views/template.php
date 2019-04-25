@@ -88,7 +88,7 @@
                   <li><a href="<?php echo BASE_URL ?>/pregao-eletronico">Pregão Eletrônico</a></li>
               </ul>
           </li>
-      <li><a href="<?php echo BASE_URL ?>/configuracoes">Configurações</a></li>
+      <!--<li><a href="<?php echo BASE_URL ?>/configuracoes">Configurações</a></li>-->
       <li><a href="<?php echo BASE_URL ?>/logout">Sair</a></li>
   </ul>
       

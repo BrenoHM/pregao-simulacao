@@ -2,8 +2,27 @@
 
 class lancesController extends controller {
     
-    function __construct() {
+    function __construct()
+
+    {
+
         parent::__construct();
+
+        $now = date("Y-m-d H:i:s");
+
+        if( !empty($_SESSION['mudaSituacaoLance']) ) {
+
+            if( (strtotime($now) > strtotime($_SESSION['mudaSituacaoLance'])) ) {
+                $this->mudaStatus();
+                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +5 minutes"));
+            }
+
+        }else{
+
+            $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +5 minutes"));
+
+        }
+
     }
     
     public function index() 
@@ -85,6 +104,8 @@ class lancesController extends controller {
             if( isset( $_SESSION['lances'][$idProposta] ) ){
                 $dados['lances'] = $_SESSION['lances'][$idProposta];
             }
+
+            $dados['mudaSituacaoLance'] = date('H:i:s', strtotime($_SESSION['mudaSituacaoLance']));
             
             $this->loadTemplate('pregao-eletronico/lances/cadastrar', $dados);
             
@@ -92,6 +113,16 @@ class lancesController extends controller {
             header("Location: " . BASE_URL . "/login");
         }
         
+    }
+
+    public function mudaStatus() {
+        if( $_SESSION['situacaoLance'] == 'A' ) {
+            $_SESSION['situacaoLance'] = "AI";
+        }else if( $_SESSION['situacaoLance'] == 'AI' ){
+            $_SESSION['situacaoLance'] = "EA";
+        }else if( $_SESSION['situacaoLance'] == 'EA' ){
+            $_SESSION['situacaoLance'] = "A";
+        }
     }
     
 }

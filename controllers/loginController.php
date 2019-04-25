@@ -107,7 +107,9 @@ class loginController extends controller {
             'qtd_estimada'                => 2
         );
 
-        $_SESSION['situacaoLance'] = "A";
+        $_SESSION['mudaSituacaoLance'] = "";
+
+        $_SESSION['situacaoLance']     = "A";
         
     }
 

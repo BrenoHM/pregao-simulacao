@@ -71,6 +71,7 @@
 		</div>
 	</div>
 	<div class="row text-center">
+		<p>Próxima alteração às: <?php echo $mudaSituacaoLance; ?></p>
 		<a href="<?php echo BASE_URL ?>/pregao-eletronico/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>
