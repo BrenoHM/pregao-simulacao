@@ -14,12 +14,12 @@ class lancesController extends controller {
 
             if( (strtotime($now) > strtotime($_SESSION['mudaSituacaoLance'])) ) {
                 $this->mudaStatus();
-                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +5 minutes"));
+                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
             }
 
         }else{
 
-            $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +5 minutes"));
+            $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
 
         }
 
