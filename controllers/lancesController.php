@@ -106,8 +106,14 @@ class lancesController extends controller {
             }
 
             $dados['mudaSituacaoLance'] = date('H:i:s', strtotime($_SESSION['mudaSituacaoLance']));
+
+            $dados['proposta'] = $_SESSION['usuario']['propostas'][$idProposta];
             
-            $this->loadTemplate('pregao-eletronico/lances/cadastrar', $dados);
+            if( $_SESSION['situacaoLance'] == 'EA' ){
+                $this->loadTemplate('pregao-eletronico/lances/encerrado', $dados);
+            }else{
+                $this->loadTemplate('pregao-eletronico/lances/cadastrar', $dados);    
+            }
             
         }else{
             header("Location: " . BASE_URL . "/login");

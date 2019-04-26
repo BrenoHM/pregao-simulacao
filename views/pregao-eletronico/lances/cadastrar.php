@@ -34,7 +34,8 @@
 									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) >= str_replace($search, $replace, $lances[$idItem]['melhor']) ){
 										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
 									}else{
-										$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";
+										//$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";
+										$icone = "<i class='fa fa-thumbs-o-down' aria-hidden='true' style='color: red;'></i>";
 									}
 
 								}else{
@@ -72,7 +73,7 @@
 	</div>
 	<div class="row text-center">
 		<p>Próxima alteração às: <?php echo $mudaSituacaoLance; ?></p>
-		<a href="<?php echo BASE_URL ?>/pregao-eletronico/" class="btn btn-primary">Voltar</a>
+		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>
 
