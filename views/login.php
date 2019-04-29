@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Simulação | Login</title>
+  <title>CGOV - Simulador de Pregão Online | Login</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
@@ -41,7 +41,7 @@
   </div>
 
   <div class="col-md-6 login-box-body">
-    <!--<p class="login-box-msg">MINISTÉRIO DO PLANEJAMENTO ORÇAMENTO E GESTÃO</p>-->
+    <p class="login-box-msg">Simulador de Pregão Online</p>
 
     <?php if(isset($aviso)) { echo $aviso; } ?>
     
