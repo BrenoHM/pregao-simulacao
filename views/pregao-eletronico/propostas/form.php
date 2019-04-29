@@ -5,7 +5,7 @@
         <th class="text-center v-middle">Marcar<br>Todas</th>
       <?php endif; ?>
       <th class="text-center v-middle">Item</th>
-      <th class="v-middle">Descricao</th>
+      <th class="v-middle">Descrição</th>
       <th class="text-center v-middle">Tratamento<br>Diferenciado</th>
       <th class="text-center v-middle">Aplicabilidade<br>Decreto 7174</th>
       <th class="text-center v-middle">Aplic. Margem<br>Preferência</th>
@@ -41,7 +41,7 @@
           </td>
           <td class="text-center v-middle"><strong>Valor Total(R$)</strong><br>
               <?php if( !isset($proposta['itens'][$idItem]['valor_total']) || $alterar ): ?>
-                  <input type="text" name="valor_total[]" class="valor_total money" value="<?php echo isset($proposta['itens'][$idItem]['valor_total']) ? $proposta['itens'][$idItem]['valor_total'] : ''; ?>" <?php echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?>>
+                  <input type="text" name="valor_total[]" class="valor_total" style="cursor: not-allowed;" readonly="readonly" value="<?php echo isset($proposta['itens'][$idItem]['valor_total']) ? $proposta['itens'][$idItem]['valor_total'] : ''; ?>" <?php echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?>>
               <?php else: ?>
                   <?php echo $proposta['itens'][$idItem]['valor_total']; ?>
               <?php endif; ?>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
           <td class="text-center v-middle">&nbsp;</td>
-          <td class="v-middle" colspan="9"><strong>Descricao detalhada do objeto ofertado</strong><br>
+          <td class="v-middle" colspan="9"><strong>Descrição detalhada do objeto ofertado</strong><br>
             <?php if( !isset($proposta['itens'][$idItem]['descricao']) || $alterar ): ?>
                 <textarea class="descricao form-control" name="descricao[]" rows="5" <?php echo (isset($alterar) && !$alterar) ? 'disabled="disabled"' : ''; ?>><?php echo isset($proposta['itens'][$idItem]['descricao']) ? $proposta['itens'][$idItem]['descricao'] : ''; ?></textarea>
             <?php else: ?>
@@ -135,3 +135,16 @@
         <?php endif; ?>
     </div>
 </div>
+
+<script type="text/javascript">
+
+$(function(){
+    $("input[name='valor_unit[]']").on('change', function(){
+        var valor = parseFloat($(this).val().replace('.', '').replace(',', '.'));
+        var qtd   = parseInt($(this).parent().prev().text());
+        var total = valor * qtd;
+        $(this).parent().next().find('input').val(total.toLocaleString('pt-BR'));
+    });
+});
+
+</script>

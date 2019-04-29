@@ -80,7 +80,7 @@ class loginController extends controller {
             'qtd_estimada'                => 300
         );
 
-        $_SESSION['items'][4] = array(
+        /*$_SESSION['items'][4] = array(
             'descricao'                   => 'CAPA CORTE CABELO',
             'tratamento_diferenciado'     => '-',
             'aplicabilidade_decreto_7174' => 'Não',
@@ -105,7 +105,7 @@ class loginController extends controller {
             'aplic_margem_preferencia'    => 'Não',
             'unid_fornec'                 => 'UNIDADE',
             'qtd_estimada'                => 2
-        );
+        );*/
 
         $_SESSION['mudaSituacaoLance'] = "";
 
