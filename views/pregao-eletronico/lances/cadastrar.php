@@ -31,7 +31,7 @@
 									$search        = array('.', ',');
                     				$replace       = array('', '.');
 
-									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) > str_replace($search, $replace, $lances[$idItem]['melhor']) ){
+									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) < str_replace($search, $replace, $lances[$idItem]['melhor']) ){
 										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
 									}else if( str_replace($search, $replace, $lances[$idItem]['ultimo']) == str_replace($search, $replace, $lances[$idItem]['melhor']) ){
 										//$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";

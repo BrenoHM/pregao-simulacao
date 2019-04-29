@@ -74,7 +74,7 @@ class lancesController extends controller {
                 //$ultimo        = str_replace($search, $replace, $_SESSION['lances'][$idProposta][$post['item']]['ultimo']);
                 $melhor        = $_SESSION['lances'][$idProposta][$post['item']]['melhor'];
 
-                if( str_replace($search, $replace, $post['lance']) >= str_replace($search, $replace, $melhor) ) {
+                if( str_replace($search, $replace, $post['lance']) <= str_replace($search, $replace, $melhor) ) {
                     $_SESSION['lances'][$idProposta][$post['item']]['melhor'] = $post['lance'];
                 }
 
@@ -144,7 +144,7 @@ class lancesController extends controller {
 
             $search        = array('.', ',');
             $replace       = array('', '.');
-            if( $valor > @str_replace($search, $replace, $_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
+            if( ($valor < @str_replace($search, $replace, $_SESSION['lances'][$idProposta][$idItem]['melhor'])) || !isset($_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
                 $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
             }
 
