@@ -8,21 +8,6 @@ class lancesController extends controller {
 
         parent::__construct();
 
-        $now = date("Y-m-d H:i:s");
-
-        if( !empty($_SESSION['mudaSituacaoLance']) ) {
-
-            if( (strtotime($now) > strtotime($_SESSION['mudaSituacaoLance'])) ) {
-                $this->mudaStatus();
-                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
-            }
-
-        }else{
-
-            $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
-
-        }
-
     }
     
     public function index() 
@@ -55,28 +40,45 @@ class lancesController extends controller {
 
             $dados['lanceInserido'] = false;
 
+            if( !isset( $_SESSION['lances'][$idProposta] ) ){
+                $this->geraLances($idProposta);
+            }
+
+            $now = date("Y-m-d H:i:s");
+
+            if( !empty($_SESSION['mudaSituacaoLance']) ) {
+
+                if( (strtotime($now) > strtotime($_SESSION['mudaSituacaoLance'])) ) {
+                    $this->mudaStatus();
+                    if($_SESSION['situacaoLance'] != "EA"){
+                        //$uri = $_SERVER['REQUEST_URI'];
+                        //$uri = explode("/", $uri);
+                        //$idProposta = end($uri);
+                        $this->geraLances($idProposta, false);
+                    }
+                    $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
+                }
+
+            }else{
+
+                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
+
+            }
+
             if( isset($_POST['cadastrar']) ) {
 
                 $post = $_POST;
 
-                if( isset( $_SESSION['lances'][$idProposta][$post['item']] ) ){
+                $search        = array('.', ',');
+                $replace       = array('', '.');
+                //$ultimo        = str_replace($search, $replace, $_SESSION['lances'][$idProposta][$post['item']]['ultimo']);
+                $melhor        = $_SESSION['lances'][$idProposta][$post['item']]['melhor'];
 
-                    $search        = array('.', ',');
-                    $replace       = array('', '.');
-                    $ultimo        = str_replace($search, $replace, $_SESSION['lances'][$idProposta][$post['item']]['ultimo']);
-                    $melhor        = $_SESSION['lances'][$idProposta][$post['item']]['melhor'];
-                    //$post['lance'] = str_replace($search, $replace, $post['lance']);
-
-                    if( str_replace($search, $replace, $post['lance']) >= str_replace($search, $replace, $melhor) ) {
-                        $_SESSION['lances'][$idProposta][$post['item']]['melhor'] = $post['lance'];
-                    }
-
-                    $_SESSION['lances'][$idProposta][$post['item']]['ultimo'] = $post['lance'];
-
-                }else{
-                    $_SESSION['lances'][$idProposta][$post['item']]['ultimo'] = $post['lance'];
+                if( str_replace($search, $replace, $post['lance']) >= str_replace($search, $replace, $melhor) ) {
                     $_SESSION['lances'][$idProposta][$post['item']]['melhor'] = $post['lance'];
                 }
+
+                $_SESSION['lances'][$idProposta][$post['item']]['ultimo'] = $post['lance'];
 
                 $dados['lanceInserido'] = true;
 
@@ -101,13 +103,13 @@ class lancesController extends controller {
 
             $dados['idProposta'] = $idProposta;
 
-            if( isset( $_SESSION['lances'][$idProposta] ) ){
-                $dados['lances'] = $_SESSION['lances'][$idProposta];
-            }
+            $dados['lances'] = $_SESSION['lances'][$idProposta];
 
-            $dados['mudaSituacaoLance'] = date('H:i:s', strtotime($_SESSION['mudaSituacaoLance']));
+            //$dados['mudaSituacaoLance'] = date('H:i:s', strtotime($_SESSION['mudaSituacaoLance']));
 
             $dados['proposta'] = $_SESSION['usuario']['propostas'][$idProposta];
+
+            //$_SESSION['situacaoLance'] = 'A'; //so pra teste
             
             if( $_SESSION['situacaoLance'] == 'EA' ){
                 $this->loadTemplate('pregao-eletronico/lances/encerrado', $dados);
@@ -121,13 +123,39 @@ class lancesController extends controller {
         
     }
 
-    public function mudaStatus() {
+    public function mudaStatus()
+
+    {
         if( $_SESSION['situacaoLance'] == 'A' ) {
             $_SESSION['situacaoLance'] = "AI";
         }else if( $_SESSION['situacaoLance'] == 'AI' ){
             $_SESSION['situacaoLance'] = "EA";
         }else if( $_SESSION['situacaoLance'] == 'EA' ){
             $_SESSION['situacaoLance'] = "A";
+        }
+    }
+
+    public function geraLances($idProposta, $zeraUltimo = true)
+
+    {
+        foreach ($_SESSION['items'] as $idItem => $value) {
+
+            $valor = rand(1, 999999);
+
+            $search        = array('.', ',');
+            $replace       = array('', '.');
+            if( $valor > @str_replace($search, $replace, $_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
+                $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
+            }
+
+            if( $zeraUltimo ) {
+                if( isset($_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total']) ){
+                    $_SESSION['lances'][$idProposta][$idItem]['ultimo'] = $_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total'];
+                }else{
+                    $_SESSION['lances'][$idProposta][$idItem]['ultimo'] = 0;
+                }
+            }
+
         }
     }
     

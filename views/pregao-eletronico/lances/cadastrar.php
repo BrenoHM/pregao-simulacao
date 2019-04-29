@@ -31,10 +31,13 @@
 									$search        = array('.', ',');
                     				$replace       = array('', '.');
 
-									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) >= str_replace($search, $replace, $lances[$idItem]['melhor']) ){
+									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) > str_replace($search, $replace, $lances[$idItem]['melhor']) ){
 										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
-									}else{
+									}else if( str_replace($search, $replace, $lances[$idItem]['ultimo']) == str_replace($search, $replace, $lances[$idItem]['melhor']) ){
 										//$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";
+										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
+									}
+									else{
 										$icone = "<i class='fa fa-thumbs-o-down' aria-hidden='true' style='color: red;'></i>";
 									}
 
@@ -47,7 +50,8 @@
 								<td><?php echo $icone; ?> <?php echo $idItem; ?></td>
 								<td><?php echo $item['descricao']; ?></td>
 								<td><?php echo $situacaoLance; ?></td>
-								<td><?php echo isset($lances[$idItem]['ultimo']) ? $lances[$idItem]['ultimo'] : '-'; ?></td>
+								<td><?php 
+									if (isset($lances[$idItem]['ultimo'])) { echo $lances[$idItem]['ultimo']; } else if(isset($proposta['itens'][$idItem]['valor_total'])) { echo number_format($proposta['itens'][$idItem]['valor_total'], 2, ',', '.'); } else { echo '-'; } ?></td>
 								<td><?php echo isset($lances[$idItem]['melhor']) ? $lances[$idItem]['melhor'] : '-'; ?></td>
 								<td>(R$) <form action="" method="post" style="display: inline;">
 											<input type="text" name="lance" class="money" required="required">
@@ -72,7 +76,7 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<p>Próxima alteração às: <?php echo $mudaSituacaoLance; ?></p>
+		<!--<p>Próxima alteração às: <?php //echo $mudaSituacaoLance; ?></p>-->
 		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>

@@ -17,6 +17,7 @@ class logoutController extends controller {
         unset($_SESSION['items']);
         unset($_SESSION['mudaSituacaoLance']);
         unset($_SESSION['situacaoLance']);
+        unset($_SESSION['lances']);
         header("Location: " . BASE_URL . $redirect);
         
     }

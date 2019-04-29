@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<p>Próxima alteração às: <?php echo $mudaSituacaoLance; ?></p>
+		<!--<p>Próxima alteração às: <?php //echo $mudaSituacaoLance; ?></p>-->
 		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>
