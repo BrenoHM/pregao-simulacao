@@ -1,6 +1,10 @@
 <?php
 
 class lancesController extends controller {
+
+    //public $now = date("Y-m-d H:i:s");
+    public $tempoMudaStatus = "15";
+    public $tempoGeraLance  = "60";
     
     function __construct()
 
@@ -41,29 +45,12 @@ class lancesController extends controller {
             $dados['lanceInserido'] = false;
 
             if( !isset( $_SESSION['lances'][$idProposta] ) ){
-                $this->geraLances($idProposta);
+                $this->rotinaGeraLance($idProposta);
             }
 
-            $now = date("Y-m-d H:i:s");
+            $this->mudaStatus();
 
-            if( !empty($_SESSION['mudaSituacaoLance']) ) {
-
-                if( (strtotime($now) > strtotime($_SESSION['mudaSituacaoLance'])) ) {
-                    $this->mudaStatus();
-                    if($_SESSION['situacaoLance'] != "EA"){
-                        //$uri = $_SERVER['REQUEST_URI'];
-                        //$uri = explode("/", $uri);
-                        //$idProposta = end($uri);
-                        $this->geraLances($idProposta, false);
-                    }
-                    $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
-                }
-
-            }else{
-
-                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +15 seconds"));
-
-            }
+            $this->geraLances($idProposta, false);
 
             if( isset($_POST['cadastrar']) ) {
 
@@ -105,11 +92,7 @@ class lancesController extends controller {
 
             $dados['lances'] = $_SESSION['lances'][$idProposta];
 
-            //$dados['mudaSituacaoLance'] = date('H:i:s', strtotime($_SESSION['mudaSituacaoLance']));
-
             $dados['proposta'] = $_SESSION['usuario']['propostas'][$idProposta];
-
-            //$_SESSION['situacaoLance'] = 'A'; //so pra teste
             
             if( $_SESSION['situacaoLance'] == 'EA' ){
                 $this->loadTemplate('pregao-eletronico/lances/encerrado', $dados);
@@ -126,16 +109,60 @@ class lancesController extends controller {
     public function mudaStatus()
 
     {
-        if( $_SESSION['situacaoLance'] == 'A' ) {
-            $_SESSION['situacaoLance'] = "AI";
-        }else if( $_SESSION['situacaoLance'] == 'AI' ){
-            $_SESSION['situacaoLance'] = "EA";
-        }else if( $_SESSION['situacaoLance'] == 'EA' ){
-            $_SESSION['situacaoLance'] = "A";
+
+        $now = date("Y-m-d H:i:s");
+
+        if( !empty($_SESSION['mudaSituacaoLance']) ) {
+
+            if( (strtotime($now) > strtotime($_SESSION['mudaSituacaoLance'])) ) {
+
+                if( $_SESSION['situacaoLance'] == 'A' ) {
+                    $_SESSION['situacaoLance'] = "AI";
+                }else if( $_SESSION['situacaoLance'] == 'AI' ){
+                    $_SESSION['situacaoLance'] = "EA";
+                }else if( $_SESSION['situacaoLance'] == 'EA' ){
+                    $_SESSION['situacaoLance'] = "A";
+                }
+
+                $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +".$this->tempoMudaStatus." seconds"));
+            }
+
+        }else{
+
+            $_SESSION['mudaSituacaoLance'] = date("Y-m-d H:i:s", strtotime( $now ." +".$this->tempoMudaStatus." seconds"));
+
         }
+        
     }
 
     public function geraLances($idProposta, $zeraUltimo = true)
+
+    {
+
+        $now = date("Y-m-d H:i:s");
+
+        if( !empty($_SESSION['geraLance']) ) {
+
+            if( (strtotime($now) > strtotime($_SESSION['geraLance'])) ) {
+                
+                if($_SESSION['situacaoLance'] != "EA"){
+
+                    $this->rotinaGeraLance($idProposta, $zeraUltimo);
+
+                }
+                $_SESSION['geraLance'] = date("Y-m-d H:i:s", strtotime( $now ." +".$this->tempoGeraLance." seconds"));
+            }
+
+        }else{
+
+            $_SESSION['geraLance'] = date("Y-m-d H:i:s", strtotime( $now ." +".$this->tempoGeraLance." seconds"));
+
+        }
+
+    }
+
+
+    public function rotinaGeraLance($idProposta, $zeraUltimo = true)
 
     {
         foreach ($_SESSION['items'] as $idItem => $value) {
