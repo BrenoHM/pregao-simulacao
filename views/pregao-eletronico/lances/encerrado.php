@@ -51,3 +51,16 @@
 		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>
+
+<script type="text/javascript">
+
+$(function(){
+
+	//REFRESH NA PÁGINA EM 15 SEGUNDOS
+	setTimeout(function(){ 
+		window.location.href = window.location.href; 
+	}, 15000);
+	
+});
+  
+</script>
