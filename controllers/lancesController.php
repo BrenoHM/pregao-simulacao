@@ -3,8 +3,8 @@
 class lancesController extends controller {
 
     //public $now = date("Y-m-d H:i:s");
-    public $tempoMudaStatus = "15";
-    public $tempoGeraLance  = "60";
+    public $tempoMudaStatus = "60";
+    public $tempoGeraLance  = "15";
     
     function __construct()
 
@@ -167,7 +167,7 @@ class lancesController extends controller {
     {
         foreach ($_SESSION['items'] as $idItem => $value) {
 
-            $valor = rand(1, 999999);
+            $valor = rand(1, 99999);
 
             $search        = array('.', ',');
             $replace       = array('', '.');

@@ -83,21 +83,28 @@
 
 <script type="text/javascript">
 
-	$(function(){
-		$('form').on('submit', function(){
+$(function(){
 
-			var valor = $(this).find('.money').val();
-			var msg   = 'Confirma o lance no valor de R$ '+valor+'?\nLembre-se que deve ser informado o valor total do item.';
+	//REFRESH NA PÁGINA EM 15 SEGUNDOS
+	setTimeout(function(){ 
+		window.location.href = window.location.href; 
+	}, 15000);
 
-			if ( !confirm(msg) ) {
-		        return false;
-		    }
-			
-		});
+	$('form').on('submit', function(){
 
-		<?php if( $lanceInserido ): ?>
-			alert('Lance registrado com sucesso!');
-		<?php endif; ?>
+		var valor = $(this).find('.money').val();
+		var msg   = 'Confirma o lance no valor de R$ '+valor+'?\nLembre-se que deve ser informado o valor total do item.';
+
+		if ( !confirm(msg) ) {
+	        return false;
+	    }
+		
 	});
+
+	<?php if( $lanceInserido ): ?>
+		alert('Lance registrado com sucesso!');
+	<?php endif; ?>
+	
+});
   
 </script>
