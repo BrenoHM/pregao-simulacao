@@ -172,7 +172,15 @@ class lancesController extends controller {
             $search        = array('.', ',');
             $replace       = array('', '.');
             if( ($valor < @str_replace($search, $replace, $_SESSION['lances'][$idProposta][$idItem]['melhor'])) || !isset($_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
-                $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
+                if( !isset($_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
+                    if( isset($_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total']) ){
+                        $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format((str_replace($search, $replace, $_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total']) * 0.9), 2, ',', '.');
+                    }else{
+                        $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
+                    }
+                }else{
+                    $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
+                }
             }
 
             if( $zeraUltimo ) {
