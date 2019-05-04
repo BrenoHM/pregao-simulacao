@@ -63,6 +63,11 @@ class lancesController extends controller {
 
                 if( str_replace($search, $replace, $post['lance']) <= str_replace($search, $replace, $melhor) ) {
                     $_SESSION['lances'][$idProposta][$post['item']]['melhor'] = $post['lance'];
+                    if( str_replace($search, $replace, $post['lance']) == str_replace($search, $replace, $melhor) ) {
+                        $_SESSION['lanceIgual'][$post['item']] = 1;
+                    }else{
+                        $_SESSION['lanceIgual'][$post['item']] = 0;
+                    }
                 }
 
                 $_SESSION['lances'][$idProposta][$post['item']]['ultimo'] = $post['lance'];
@@ -165,13 +170,14 @@ class lancesController extends controller {
     public function rotinaGeraLance($idProposta, $zeraUltimo = true)
 
     {
+        $temMelhor = false;
         foreach ($_SESSION['items'] as $idItem => $value) {
 
             $valor = rand(1, 99999);
 
             $search        = array('.', ',');
             $replace       = array('', '.');
-            if( ($valor < @str_replace($search, $replace, $_SESSION['lances'][$idProposta][$idItem]['melhor'])) || !isset($_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
+            //if( ($valor < @str_replace($search, $replace, $_SESSION['lances'][$idProposta][$idItem]['melhor'])) || !isset($_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
                 if( !isset($_SESSION['lances'][$idProposta][$idItem]['melhor']) ){
                     if( isset($_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total']) ){
                         $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format((str_replace($search, $replace, $_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total']) * 0.9), 2, ',', '.');
@@ -179,9 +185,10 @@ class lancesController extends controller {
                         $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
                     }
                 }else{
-                    $_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
+                    $temMelhor = true;
+                    //$_SESSION['lances'][$idProposta][$idItem]['melhor'] = number_format($valor, 2, ',', '.');
                 }
-            }
+            //}
 
             if( $zeraUltimo ) {
                 if( isset($_SESSION['usuario']['propostas'][$idProposta]['itens'][$idItem]['valor_total']) ){
@@ -191,6 +198,11 @@ class lancesController extends controller {
                 }
             }
 
+        }
+        if($temMelhor){
+            $item = rand(1, 3);
+            $_SESSION['lances'][$idProposta][$item]['melhor'] = number_format((str_replace($search, $replace, $_SESSION['lances'][$idProposta][$item]['melhor']) * 0.9), 2, ',', '.');
+            $_SESSION['lanceIgual'][$item] = 0;
         }
     }
     

@@ -31,11 +31,10 @@
 									$search        = array('.', ',');
                     				$replace       = array('', '.');
 
-									if( str_replace($search, $replace, $lances[$idItem]['ultimo']) < str_replace($search, $replace, $lances[$idItem]['melhor']) ){
+									if( (str_replace($search, $replace, $lances[$idItem]['ultimo']) <= str_replace($search, $replace, $lances[$idItem]['melhor'])) && !$_SESSION['lanceIgual'][$idItem] ){
 										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
-									}else if( str_replace($search, $replace, $lances[$idItem]['ultimo']) == str_replace($search, $replace, $lances[$idItem]['melhor']) ){
-										//$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";
-										$icone = "<i class='fa fa-thumbs-o-up' aria-hidden='true' style='color: green;'></i>";
+									}else if( $_SESSION['lanceIgual'][$idItem] ){
+										$icone = "<i class='fa fa-hand-paper-o' aria-hidden='true' style='color: yellow;'></i>";
 									}
 									else{
 										$icone = "<i class='fa fa-thumbs-o-down' aria-hidden='true' style='color: red;'></i>";
@@ -76,7 +75,6 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<!--<p>Próxima alteração às: <?php //echo $mudaSituacaoLance; ?></p>-->
 		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
 	</div>
 </section>
@@ -88,7 +86,7 @@ $(function(){
 	//REFRESH NA PÁGINA EM 15 SEGUNDOS
 	setTimeout(function(){ 
 		window.location.href = window.location.href; 
-	}, 15000);
+	}, 16000);
 
 	$('form').on('submit', function(){
 

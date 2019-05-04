@@ -56,10 +56,10 @@
 
 $(function(){
 
-	//REFRESH NA PÁGINA EM 15 SEGUNDOS
+	//REFRESH NA PÁGINA EM 60 SEGUNDOS
 	setTimeout(function(){ 
 		window.location.href = window.location.href; 
-	}, 15000);
+	}, 61000);
 	
 });
   

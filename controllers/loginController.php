@@ -109,9 +109,17 @@ class loginController extends controller {
 
         $_SESSION['mudaSituacaoLance'] = "";
 
-        $_SESSION['geraLance'] = "";
+        $_SESSION['geraLance']         = "";
 
         $_SESSION['situacaoLance']     = "A";
+
+        $_SESSION['lanceIgual']['0']     = 0;
+
+        $_SESSION['lanceIgual']['1']     = 0;
+
+        $_SESSION['lanceIgual']['2']     = 0;
+
+        $_SESSION['lanceIgual']['3']     = 0;
         
     }
 
