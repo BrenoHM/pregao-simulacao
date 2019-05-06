@@ -77,13 +77,13 @@
             <div class="row">
                 <div class="form-group col-md-4">
                   <label for="data_envio_proposta">Data de Início do envio da proposta</label>
-                  <input type="date" id="data_envio_proposta" class="form-control" name="data_envio_proposta" placeholder="" value="<?php if( isset($evento['data_envio_proposta']) ) { echo $evento['data_envio_proposta']; } ?>" required="required">
+                  <input type="text" id="data_envio_proposta" class="form-control" name="data_envio_proposta" placeholder="" value="<?php if( isset($evento['data_envio_proposta']) ) { echo $evento['data_envio_proposta']; } ?>" required="required">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
                   <label for="data_sessao_publica">Data de início da Sessão Pública</label>
-                  <input type="date" id="data_sessao_publica" class="form-control" name="data_sessao_publica" placeholder="" value="<?php if( isset($evento['data_sessao_publica']) ) { echo $evento['data_sessao_publica']; } ?>" required="required">
+                  <input type="text" id="data_sessao_publica" class="form-control" name="data_sessao_publica" placeholder="" value="<?php if( isset($evento['data_sessao_publica']) ) { echo $evento['data_sessao_publica']; } ?>" required="required">
                 </div>
             </div>
             <div class="row">

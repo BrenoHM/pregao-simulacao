@@ -157,6 +157,7 @@
 <script src="<?php echo BASE_URL; ?>/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="<?php echo BASE_URL; ?>/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?php echo BASE_URL; ?>/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js" charset="UTF-8"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<?php echo BASE_URL; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- SlimScroll -->
@@ -178,13 +179,9 @@
 <script>
     
     $(function(){
-        /*$("#checkAll").change(function(){
-            if ($(this).is(':checked')) {
-                $('input:checkbox').not($(this)).prop('checked',true);
-            } else {
-                $('input:checkbox').prop('checked', false);
-            }       
-        });*/
+        $("#data_envio_proposta, #data_sessao_publica").datepicker({
+          language: 'pt-BR'
+        });
     });
     
     /*function removeFoto(obj, controller){
