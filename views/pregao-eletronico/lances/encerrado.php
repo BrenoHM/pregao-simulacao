@@ -47,8 +47,10 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<!--<p>Próxima alteração às: <?php //echo $mudaSituacaoLance; ?></p>-->
 		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
+		<form action="" method="post" style="display: inline;">
+			<input type="submit" name="reiniciarLances" class="btn btn-primary" value="Reiniciar Lances" onclick="return confirm('Deseja realmente Reiniciar este lance')" />
+		</form>
 	</div>
 </section>
 

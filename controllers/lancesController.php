@@ -44,6 +44,10 @@ class lancesController extends controller {
 
             $dados['lanceInserido'] = false;
 
+            if( isset($_POST['reiniciarLances']) ) {
+                $this->reiniciarLances($idProposta);
+            }
+
             if( !isset( $_SESSION['lances'][$idProposta] ) ){
                 $this->rotinaGeraLance($idProposta);
             }
@@ -204,6 +208,16 @@ class lancesController extends controller {
             $_SESSION['lances'][$idProposta][$item]['melhor'] = number_format((str_replace($search, $replace, $_SESSION['lances'][$idProposta][$item]['melhor']) * 0.9), 2, ',', '.');
             $_SESSION['lanceIgual'][$item] = 0;
         }
+    }
+
+    public function reiniciarLances($idProposta)
+    {
+        unset($_SESSION['lances'][$idProposta]);
+        $_SESSION['situacaoLance']   = 'A';
+        $_SESSION['lanceIgual']['1'] = 0;
+        $_SESSION['lanceIgual']['2'] = 0;
+        $_SESSION['lanceIgual']['3'] = 0;
+        $this->rotinaGeraLance($idProposta);
     }
     
 }

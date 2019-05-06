@@ -52,7 +52,7 @@
 								<td><?php 
 									if (isset($lances[$idItem]['ultimo'])) { echo $lances[$idItem]['ultimo']; } else if(isset($proposta['itens'][$idItem]['valor_total'])) { echo number_format($proposta['itens'][$idItem]['valor_total'], 2, ',', '.'); } else { echo '-'; } ?></td>
 								<td><?php echo isset($lances[$idItem]['melhor']) ? $lances[$idItem]['melhor'] : '-'; ?></td>
-								<td>(R$) <form action="" method="post" style="display: inline;">
+								<td>(R$) <form action="" id="formulario" method="post" style="display: inline;">
 											<input type="text" name="lance" class="money" required="required">
 											<input type="submit" name="cadastrar" value="Enviar">
 											<input type="hidden" name="item" value="<?php echo $idItem; ?>" />
@@ -76,6 +76,9 @@
 	</div>
 	<div class="row text-center">
 		<a href="<?php echo BASE_URL ?>/lances/" class="btn btn-primary">Voltar</a>
+		<form action="" method="post" style="display: inline;">
+			<input type="submit" name="reiniciarLances" class="btn btn-primary" value="Reiniciar Lances" onclick="return confirm('Deseja realmente Reiniciar este lance')" />
+		</form>
 	</div>
 </section>
 
@@ -88,7 +91,7 @@ $(function(){
 		window.location.href = window.location.href; 
 	}, 16000);
 
-	$('form').on('submit', function(){
+	$('#formulario').on('submit', function(){
 
 		var valor = $(this).find('.money').val();
 		var msg   = 'Confirma o lance no valor de R$ '+valor+'?\nLembre-se que deve ser informado o valor total do item.';
