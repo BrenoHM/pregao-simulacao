@@ -49,10 +49,7 @@
   
   <!-- jQuery 2.2.3 -->
   <script src="<?php echo BASE_URL; ?>/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <?php
-    $usuario = Sessao::getSessionNivel() == 'admin' ? new Usuario() : new UsuarioAtletica();
-    $gravata = $usuario->getGravata(Sessao::getSessionEmail(), 160);
-  ?>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
