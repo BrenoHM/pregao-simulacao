@@ -196,7 +196,7 @@ class propostasController extends controller {
 
     }
 
-    public function show($idProposta)
+    /*public function show($idProposta)
 
     {
 
@@ -214,6 +214,6 @@ class propostasController extends controller {
 
         $this->loadTemplate('pregao-eletronico/propostas/editar', $dados);
 
-    }
+    }*/
     
 }

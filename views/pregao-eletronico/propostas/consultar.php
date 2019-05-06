@@ -28,7 +28,7 @@
 					<tbody>
 						<?php foreach($propostas as $idProposta => $proposta): ?>
 							<tr>
-								<td><a href="<?php echo BASE_URL ?>/propostas/show/<?php echo $idProposta; ?>">Consultar<br>Proposta</a></td>
+								<td><a href="<?php echo BASE_URL ?>/propostas/editar/<?php echo $idProposta; ?>">Consultar<br>Proposta</a></td>
 								<td><?php echo '662014'; ?></td>
 								<td><?php echo '200999'; ?></td>
 								<td><?php echo 'MIN. DO PLANEJAMENTO ORCAMENTO E GESTAO/DF'; ?></td>
