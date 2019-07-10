@@ -1,4 +1,4 @@
 Introduction
 ============
 
-Cadastro de atléticas.
+Sistema de simulador de pregão.
